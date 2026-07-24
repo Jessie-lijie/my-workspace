@@ -21,20 +21,97 @@
 
 
     <!-- 首页 -->
-    <section id="home">
+<section id="home">
+
+    <div class="card progress-card">
+
+        <h2>今日完成率</h2>
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+        <h3 id="progressText">0%</h3>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <div class="title-row">
+
+            <h2>📌 今日任务</h2>
+
+            <button onclick="showAddTask()">
+                + 新任务
+            </button>
+
+        </div>
+
+
+        <div id="taskList"></div>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>🎯 我的目标</h2>
+
+        <div class="goal">
+
+            <h3>打造个人工作台 App</h3>
+
+            <div class="progress">
+
+                <div style="width:70%"></div>
+
+            </div>
+
+            <p>完成度 70%</p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <h2>📝 今日记录</h2>
+
+        <textarea 
+        id="diary"
+        placeholder="今天完成：
+
+遇到问题：
+
+明天计划："></textarea>
+
+    </div>
+
+
+</section>
+
+
+
+
+
 <section id="tasks" class="page hidden">
 
     <div class="card">
 
         <h2>☑️ 全部任务</h2>
 
-        <div id="allTasks">
-        
-        </div>
+        <div id="allTasks"></div>
 
     </div>
 
 </section>
+
+
 
 
 
@@ -48,13 +125,19 @@
         打造个人工作台 App
         </p>
 
+
         <div class="progress">
+
             <div style="width:70%"></div>
+
         </div>
+
 
     </div>
 
 </section>
+
+
 
 
 
@@ -64,13 +147,13 @@
 
         <h2>📝 日记</h2>
 
-        <textarea 
-        placeholder="记录今天..."
-        ></textarea>
+        <textarea placeholder="记录今天..."></textarea>
 
     </div>
 
 </section>
+
+
 
 
 
@@ -80,9 +163,7 @@
 
         <h2>📊 统计</h2>
 
-        <h1>
-        0
-        </h1>
+        <h1>0</h1>
 
         <p>
         已完成任务
@@ -91,141 +172,3 @@
     </div>
 
 </section>
-
-        
-        <div class="card progress-card">
-            <h2>今日完成率</h2>
-
-            <div class="progress">
-                <div id="progressBar"></div>
-            </div>
-
-            <h3 id="progressText">0%</h3>
-        </div>
-
-
-        <div class="card">
-
-            <div class="title-row">
-                <h2>📌 今日任务</h2>
-
-                <button onclick="showAddTask()">
-                    + 新任务
-                </button>
-            </div>
-
-
-            <div id="taskList">
-                <!-- 任务会自动出现 -->
-            </div>
-
-        </div>
-
-
-
-        <div class="card">
-
-            <h2>🎯 我的目标</h2>
-
-            <div class="goal">
-
-                <h3>打造个人工作台 App</h3>
-
-                <div class="progress">
-                    <div style="width:70%"></div>
-                </div>
-
-                <p>完成度 70%</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="card">
-
-            <h2>📝 今日记录</h2>
-
-            <textarea 
-            id="diary"
-            placeholder="今天完成：
-            
-遇到问题：
-
-明天计划："></textarea>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- 添加任务窗口 -->
-
-    <div id="taskBox" class="popup hidden">
-
-        <div class="popup-content">
-
-            <h2>添加任务</h2>
-
-            <input 
-            id="taskInput"
-            placeholder="任务名称">
-
-
-            <button onclick="addTask()">
-                保存
-            </button>
-
-            <button onclick="closeTask()">
-                取消
-            </button>
-
-        </div>
-
-    </div>
-
-
-</div>
-<!-- 底部导航 -->
-
-<nav class="bottom-nav">
-
-<div class="nav-item active" onclick="switchPage('home')">
-    🏠
-    <span>首页</span>
-</div>
-
-
-<div class="nav-item" onclick="switchPage('tasks')">
-    ☑️
-    <span>任务</span>
-</div>
-
-
-<div class="nav-item" onclick="switchPage('goals')">
-    🎯
-    <span>目标</span>
-</div>
-
-
-<div class="nav-item" onclick="switchPage('diaryPage')">
-    📝
-    <span>日记</span>
-</div>
-
-
-<div class="nav-item" onclick="switchPage('stats')">
-    📊
-    <span>统计</span>
-</div>
-
-</nav>
-
-<script src="app.js"></script>
-
-</body>
-
-</html>
