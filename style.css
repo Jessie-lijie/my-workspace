@@ -1,30 +1,43 @@
-/* 基础设置 */
-
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
 }
+
 
 body {
-    margin: 0;
-    background: #f5f6fa;
+
+    margin:0;
+
+    background:
+    linear-gradient(
+        180deg,
+        #f4f2ff 0%,
+        #f7f8fc 40%,
+        #ffffff 100%
+    );
+
     font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "PingFang SC",
-        "Microsoft YaHei",
-        sans-serif;
-    color: #222;
+    -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+
+    color:#1d1d1f;
+
 }
 
 
-/* App容器 */
+/* 主容器 */
 
 .app {
 
-    max-width: 430px;
-    margin: auto;
-    min-height: 100vh;
-    padding: 20px;
+    max-width:430px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    padding:20px 18px 40px;
 
 }
 
@@ -34,23 +47,29 @@ body {
 
 header {
 
-    padding: 10px 5px 20px;
+    padding:15px 8px 25px;
 
 }
 
 
 header h1 {
 
-    margin: 0;
-    font-size: 28px;
+    font-size:30px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
 
 }
 
 
 header p {
 
-    color: #777;
-    margin-top: 8px;
+    margin-top:8px;
+
+    color:#777;
+
+    font-size:15px;
 
 }
 
@@ -60,16 +79,45 @@ header p {
 
 .card {
 
-    background: white;
+    background:rgba(255,255,255,0.85);
 
-    border-radius: 20px;
+    backdrop-filter:blur(15px);
 
-    padding: 20px;
+    border-radius:26px;
 
-    margin-bottom: 18px;
+    padding:22px;
+
+    margin-bottom:18px;
 
     box-shadow:
-    0 5px 20px rgba(0,0,0,0.05);
+
+    0 10px 30px rgba(80,70,150,0.08);
+
+    border:1px solid rgba(255,255,255,.7);
+
+    animation:fade .3s ease;
+
+}
+
+
+
+@keyframes fade {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:none;
+
+    }
 
 }
 
@@ -79,15 +127,17 @@ header p {
 
 .card h2 {
 
-    margin-top:0;
+    margin:0 0 16px;
 
     font-size:20px;
+
+    font-weight:700;
 
 }
 
 
 
-/* 横向标题 */
+/* 标题行 */
 
 .title-row {
 
@@ -107,29 +157,47 @@ button {
 
     border:none;
 
-    background:#5b5bf7;
+    background:
+
+    linear-gradient(
+        135deg,
+        #6c63ff,
+        #8b5cf6
+    );
 
     color:white;
 
-    padding:10px 15px;
+    padding:12px 18px;
 
-    border-radius:12px;
+    border-radius:16px;
 
-    font-size:14px;
+    font-size:15px;
 
-    cursor:pointer;
+    font-weight:600;
+
+    box-shadow:
+
+    0 8px 18px rgba(108,99,255,.25);
 
 }
 
 
 
-/* 进度条 */
+button:active {
+
+    transform:scale(.96);
+
+}
+
+
+
+/* 进度 */
 
 .progress {
 
-    height:12px;
+    height:14px;
 
-    background:#eeeeee;
+    background:#eeeefe;
 
     border-radius:20px;
 
@@ -143,17 +211,17 @@ button {
 
     height:100%;
 
-    background:#5b5bf7;
+    background:
+
+    linear-gradient(
+        90deg,
+        #6c63ff,
+        #a855f7
+    );
 
     border-radius:20px;
 
-}
-
-
-
-#progressBar {
-
-    width:0%;
+    transition:.5s;
 
 }
 
@@ -163,7 +231,11 @@ button {
 
     text-align:right;
 
-    margin-bottom:0;
+    margin-top:14px;
+
+    font-size:28px;
+
+    font-weight:800;
 
 }
 
@@ -179,9 +251,11 @@ button {
 
     justify-content:space-between;
 
-    padding:12px 0;
+    padding:15px 0;
 
-    border-bottom:1px solid #eee;
+    border-bottom:
+
+    1px solid #f0f0f5;
 
 }
 
@@ -193,9 +267,18 @@ button {
 
     align-items:center;
 
-    gap:10px;
+    gap:12px;
 
 }
+
+
+
+.task-left span {
+
+    font-size:16px;
+
+}
+
 
 
 .task-item.completed span {
@@ -210,9 +293,7 @@ button {
 
 .delete {
 
-    color:#ff5555;
-
-    cursor:pointer;
+    color:#ff5c5c;
 
 }
 
@@ -224,19 +305,35 @@ textarea {
 
     width:100%;
 
-    min-height:120px;
+    min-height:150px;
 
     border:none;
 
-    background:#f7f7f7;
+    outline:none;
 
-    border-radius:15px;
+    background:#f7f7fb;
 
-    padding:15px;
+    border-radius:20px;
 
-    resize:none;
+    padding:18px;
 
-    font-size:15px;
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+
+
+/* 目标 */
+
+.goal {
+
+    background:#faf9ff;
+
+    padding:16px;
+
+    border-radius:20px;
 
 }
 
@@ -250,7 +347,11 @@ textarea {
 
     inset:0;
 
-    background:rgba(0,0,0,0.35);
+    background:
+
+    rgba(0,0,0,.35);
+
+    backdrop-filter:blur(8px);
 
     display:flex;
 
@@ -264,13 +365,17 @@ textarea {
 
 .popup-content {
 
+    width:88%;
+
     background:white;
 
-    padding:25px;
+    padding:28px;
 
-    border-radius:20px;
+    border-radius:28px;
 
-    width:85%;
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.2);
 
 }
 
@@ -280,13 +385,11 @@ textarea {
 
     width:100%;
 
-    padding:12px;
+    padding:14px;
 
-    border-radius:10px;
+    border-radius:14px;
 
     border:1px solid #ddd;
-
-    margin:15px 0;
 
     font-size:16px;
 
@@ -302,13 +405,15 @@ textarea {
 
 
 
-/* 手机优化 */
+/* 手机 */
 
 @media(max-width:500px){
 
     .app{
 
-        padding:16px;
+        padding:
+
+        16px 16px 40px;
 
     }
 
