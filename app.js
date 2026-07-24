@@ -327,3 +327,36 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js")
     .then(() => console.log("PWA ready"));
 }
+
+function switchPage(page){
+
+
+    let pages =
+    document.querySelectorAll(".page");
+
+
+    pages.forEach(p=>{
+
+        p.classList.add("hidden");
+
+    });
+
+
+
+    document
+    .getElementById(page)
+    .classList
+    .remove("hidden");
+
+
+
+    if(page==="home"){
+
+        document
+        .getElementById("home")
+        .classList
+        .remove("hidden");
+
+    }
+
+}
