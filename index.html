@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 我的工作台</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- 顶部 -->
+    <header>
+        <h1>🌟 我的工作台</h1>
+        <p id="greeting">下午好 👋</p>
+    </header>
+
+
+    <!-- 首页 -->
+    <section id="home">
+
+        <div class="card progress-card">
+            <h2>今日完成率</h2>
+
+            <div class="progress">
+                <div id="progressBar"></div>
+            </div>
+
+            <h3 id="progressText">0%</h3>
+        </div>
+
+
+        <div class="card">
+
+            <div class="title-row">
+                <h2>📌 今日任务</h2>
+
+                <button onclick="showAddTask()">
+                    + 新任务
+                </button>
+            </div>
+
+
+            <div id="taskList">
+                <!-- 任务会自动出现 -->
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h2>🎯 我的目标</h2>
+
+            <div class="goal">
+
+                <h3>打造个人工作台 App</h3>
+
+                <div class="progress">
+                    <div style="width:70%"></div>
+                </div>
+
+                <p>完成度 70%</p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h2>📝 今日记录</h2>
+
+            <textarea 
+            id="diary"
+            placeholder="今天完成：
+            
+遇到问题：
+
+明天计划："></textarea>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- 添加任务窗口 -->
+
+    <div id="taskBox" class="popup hidden">
+
+        <div class="popup-content">
+
+            <h2>添加任务</h2>
+
+            <input 
+            id="taskInput"
+            placeholder="任务名称">
+
+
+            <button onclick="addTask()">
+                保存
+            </button>
+
+            <button onclick="closeTask()">
+                取消
+            </button>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
