@@ -69,17 +69,69 @@ function addTask(){
 
 
 
+    let priority =
+    document.getElementById("taskPriority").value;
+
+
+
+    let date =
+    document.getElementById("taskDate").value;
+
+
+
     tasks.push({
 
         id:Date.now(),
 
         name:name,
 
+        priority:priority,
+
+        date:date,
+
         completed:false
 
     });
 
 
+
+    saveTasks();
+
+
+    input.value="";
+
+    document.getElementById("taskDate").value="";
+
+
+    closeTask();
+
+
+    renderTasks();
+
+
+    updateProgress();
+
+}
+
+
+    saveTasks();
+
+
+    input.value="";
+
+
+    document.getElementById("taskDate").value="";
+
+
+    closeTask();
+
+
+    renderTasks();
+
+
+    updateProgress();
+
+}
 
     saveTasks();
 
@@ -167,9 +219,21 @@ console.log(
             onclick="toggleTask(${task.id})">
 
 
-            <span>
-            ${task.name}
-            </span>
+        <span>
+
+${task.name}
+
+<br>
+
+<small>
+
+${task.priority ? "🏷️ "+task.priority : ""}
+
+${task.date ? "　📅 "+task.date : ""}
+
+</small>
+
+</span>
 
 
             </div>
