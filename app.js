@@ -3,11 +3,13 @@
 // =====================
 
 
-// 获取数据
+// 获取任务数据
 
 let tasks = JSON.parse(
     localStorage.getItem("tasks")
 ) || [];
+
+
 
 
 // 页面加载
@@ -22,6 +24,12 @@ window.onload = function(){
 
 };
 
+
+
+
+// =====================
+// 弹窗控制
+// =====================
 
 
 // 显示新增任务窗口
@@ -50,9 +58,15 @@ function closeTask(){
 
 
 
+
+
+// =====================
 // 添加任务
+// =====================
+
 
 function addTask(){
+
 
     let input =
     document.getElementById("taskInput");
@@ -64,32 +78,42 @@ function addTask(){
 
 
     if(name===""){
+
         return;
+
     }
 
 
 
     let priority =
-    document.getElementById("taskPriority").value;
+    document.getElementById("taskPriority")
+    .value;
 
 
 
     let date =
-    document.getElementById("taskDate").value;
+    document.getElementById("taskDate")
+    .value;
 
 
 
     tasks.push({
 
+
         id:Date.now(),
+
 
         name:name,
 
+
         priority:priority,
+
 
         date:date,
 
+
         completed:false
+
 
     });
 
@@ -98,10 +122,14 @@ function addTask(){
     saveTasks();
 
 
+
     input.value="";
 
 
-    document.getElementById("taskDate").value="";
+    document
+    .getElementById("taskDate")
+    .value="";
+
 
 
     closeTask();
@@ -112,31 +140,37 @@ function addTask(){
 
     updateProgress();
 
+
 }
 
 
+
+
+
+
+// =====================
 // 显示任务
+// =====================
+
 
 function renderTasks(){
-console.log(
-    "taskList:",
-    document.getElementById("taskList")
-);
 
-console.log(
-    "allTasks:",
-    document.getElementById("allTasks")
-);
 
     let lists = [
+
+
         document.getElementById("taskList"),
+
+
         document.getElementById("allTasks")
+
+
     ];
 
 
-    // 清空两个列表
 
-    lists.forEach(list => {
+    lists.forEach(function(list){
+
 
         if(list){
 
@@ -144,19 +178,26 @@ console.log(
 
         }
 
+
     });
 
 
 
-    tasks.forEach(task=>{
+
+    tasks.forEach(function(task){
 
 
-        lists.forEach(list=>{
+
+        lists.forEach(function(list){
+
 
 
             if(!list){
+
                 return;
+
             }
+
 
 
 
@@ -164,129 +205,514 @@ console.log(
             document.createElement("div");
 
 
+
             div.className =
             "task-item "
             +
-            (task.completed ?
-            "completed" :
-            "");
+            (
+                task.completed
+                ?
+                "completed"
+                :
+                ""
+            );
+
+
 
 
 
             div.innerHTML = `
 
+
             <div class="task-left">
 
-            <input 
+
+            <input
+
             type="checkbox"
+
             ${task.completed ? "checked" : ""}
-            onclick="toggleTask(${task.id})">
+
+            onclick="toggleTask(${task.id})"
 
 
-        <span>
+            >
 
-${task.name}
 
-<br>
 
-<small>
 
-${task.priority ? "🏷️ "+task.priority : ""}
+            <span>
 
-${task.date ? "　📅 "+task.date : ""}
 
-</small>
+            ${task.name}
 
-</span>
+
+            <br>
+
+
+            <small>
+
+
+            ${task.priority ? "🏷️ "+task.priority : ""}
+
+
+            ${task.date ? "　📅 "+task.date : ""}
+
+
+            </small>
+
+
+
+            </span>
+
 
 
             </div>
 
 
-            <div 
+
+
+
+            <div
+
             class="delete"
-            onclick="deleteTask(${task.id})">
+
+            onclick="deleteTask(${task.id})"
+
+            >
 
             删除
 
+
             </div>
 
+
+
             `;
+
 
 
 
             list.appendChild(div);
 
 
+
         });
+
 
 
     });
 
 
+
 }
+
+
+
+
+
+
+// =====================
+// 完成任务
+// =====================
+
+
+function toggleTask(id){
+
+
+
+    let task =
+    tasks.find(function(item){
+
+
+        return item.id === id;
+
+
+    });
+
+
+
+
+    if(task){
+
+
+        task.completed =
+        !task.completed;
+
+
+    }
+
+
+
+    saveTasks();
+
+
+    renderTasks();
+
+
+    updateProgress();
+
+
+
+}
+
+
+
+
+
+
+
+// =====================
+// 删除任务
+// =====================
+
+
+function deleteTask(id){
+
+
+
+    tasks =
+    tasks.filter(function(task){
+
+
+
+        return task.id !== id;
+
+
+
+    });
+
+
+
+
+    saveTasks();
+
+
+    renderTasks();
+
+
+    updateProgress();
+
+
+
+}
+
+
+
+
+
+
+
+// =====================
+// 保存任务
+// =====================
+
+
+function saveTasks(){
+
+
+
+    localStorage.setItem(
+
+        "tasks",
+
+        JSON.stringify(tasks)
+
+    );
+
+
+
+}
+
+
+
+
+
+
+
+// =====================
+// 更新完成率
+// =====================
+
+
+function updateProgress(){
+
+
+
+    let total =
+    tasks.length;
+
+
+
+    let done =
+    tasks.filter(function(task){
+
+
+
+        return task.completed;
+
+
+
+    }).length;
+
+
+
+
+
+    let percent =
+
+    total===0
+
+    ?
+
+    0
+
+    :
+
+    Math.round(
+
+        done / total * 100
+
+    );
+
+
+
+
+
+    let bar =
+    document.getElementById(
+        "progressBar"
+    );
+
+
+
+    let text =
+    document.getElementById(
+        "progressText"
+    );
+
+
+
+
+
+    if(bar){
+
+
+        bar.style.width =
+        percent+"%";
+
+
+    }
+
+
+
+
+    if(text){
+
+
+        text.innerText =
+        percent+"%";
+
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+// =====================
+// 日记保存
+// =====================
+
+
+let diary =
+document.getElementById("diary");
+
+
+
+if(diary){
+
+
+    diary.addEventListener(
+
+    "input",
+
+    function(){
+
+
+        localStorage.setItem(
+
+            "diary",
+
+            diary.value
+
+        );
+
+
+    }
+
+
+    );
+
+
+}
+
+
+
+
+
+
+function loadDiary(){
+
+
+
+    let saved =
+    localStorage.getItem("diary");
+
+
+
+    let diaryBox =
+    document.getElementById("diary");
+
+
+
+    if(saved && diaryBox){
+
+
+        diaryBox.value =
+        saved;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
 // =====================
 // 页面切换
 // =====================
 
+
 function switchPage(page, nav){
 
-    //隐藏首页
+
 
     let home =
     document.getElementById("home");
 
 
+
     if(home){
 
+
         home.style.display="none";
+
 
     }
 
 
 
-    //隐藏所有其他页面
 
-    document.querySelectorAll(".page")
+
+    document
+    .querySelectorAll(".page")
     .forEach(function(item){
 
+
         item.style.display="none";
+
 
     });
 
 
 
-    //显示目标页面
+
 
     let target =
     document.getElementById(page);
 
 
+
     if(target){
 
+
         target.style.display="block";
+
 
     }
 
 
 
-    //清除导航状态
 
-    document.querySelectorAll(".nav-item")
+
+    document
+    .querySelectorAll(".nav-item")
     .forEach(function(item){
 
+
+
         item.classList.remove("active");
+
+
 
     });
 
 
 
-    //当前导航高亮
+
 
     if(nav){
 
+
         nav.classList.add("active");
 
+
     }
+
+
+
+}
+
+
+
+
+
+
+
+// =====================
+// PWA
+// =====================
+
+
+if ("serviceWorker" in navigator) {
+
+
+    navigator.serviceWorker.register(
+        "service-worker.js"
+    )
+
+    .then(function(){
+
+
+        console.log("PWA ready");
+
+
+    });
+
 
 }
