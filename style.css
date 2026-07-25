@@ -481,7 +481,7 @@ textarea {
 
 
 
-.nav-item:first-child {
+.nav-item.active {
 
     color:#6c63ff;
 
