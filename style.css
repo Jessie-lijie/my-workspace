@@ -479,25 +479,6 @@ textarea {
 
 }
 
-.icon{
-
-    font-size:22px;
-
-    line-height:1;
-
-    color:#888;
-
-}
-
-
-.nav-item.active .icon{
-
-    color:#6c63ff;
-
-    transform:scale(1.15);
-
-}
-
 .nav-item.active {
 
     color:#6c63ff;
