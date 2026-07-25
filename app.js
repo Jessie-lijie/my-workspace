@@ -104,12 +104,22 @@ function addTask(){
 function renderTasks(){
 
 
-    let list =
-    document.getElementById("taskList");
+  let lists = [
+    document.getElementById("taskList"),
+    document.getElementById("allTasks")
+];
 
 
-    list.innerHTML="";
 
+lists.forEach(list => {
+
+    if(list){
+
+        list.innerHTML="";
+
+    }
+
+});
 
 
     tasks.forEach(task=>{
