@@ -330,23 +330,63 @@ if ("serviceWorker" in navigator) {
 function switchPage(page){
 
 
-    // 隐藏所有页面
+    // 隐藏页面
+
     document.getElementById("home")
-    .style.display = "none";
+    .style.display="none";
 
 
     document.querySelectorAll(".page")
     .forEach(function(item){
 
-        item.style.display = "none";
+        item.style.display="none";
 
     });
 
 
 
     // 显示目标页面
+
     document.getElementById(page)
-    .style.display = "block";
+    .style.display="block";
+
+
+
+    // 更新底部导航状态
+
+    document.querySelectorAll(".nav-item")
+    .forEach(function(item){
+
+        item.classList.remove("active");
+
+    });
+
+
+
+    let navs =
+    document.querySelectorAll(".nav-item");
+
+
+    let pages=[
+        "home",
+        "tasks",
+        "goals",
+        "diaryPage",
+        "stats"
+    ];
+
+
+    let index =
+    pages.indexOf(page);
+
+
+    if(index>=0){
+
+        navs[index]
+        .classList
+        .add("active");
+
+    }
 
 
 }
