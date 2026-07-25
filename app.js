@@ -104,290 +104,88 @@ function addTask(){
 function renderTasks(){
 
 
-  let lists = [
-    document.getElementById("taskList"),
-    document.getElementById("allTasks")
-];
+    let lists = [
+        document.getElementById("taskList"),
+        document.getElementById("allTasks")
+    ];
 
 
+    // 清空两个列表
 
-lists.forEach(list => {
+    lists.forEach(list => {
 
-    if(list){
+        if(list){
 
-        list.innerHTML="";
+            list.innerHTML="";
 
-    }
+        }
 
-});
+    });
+
 
 
     tasks.forEach(task=>{
 
 
-        let div =
-        document.createElement("div");
+        lists.forEach(list=>{
 
 
-        div.className =
-        "task-item "
-        +
-        (task.completed?
-        "completed":"");
+            if(!list){
+                return;
+            }
 
 
 
-        div.innerHTML = `
-
-        <div class="task-left">
-
-        <input 
-        type="checkbox"
-        ${task.completed?"checked":""}
-        onclick="toggleTask(${task.id})">
-
-        <span>
-        ${task.name}
-        </span>
-
-        </div>
+            let div =
+            document.createElement("div");
 
 
-        <div 
-        class="delete"
-        onclick="deleteTask(${task.id})">
-        删除
-        </div>
-
-        `;
+            div.className =
+            "task-item "
+            +
+            (task.completed ?
+            "completed" :
+            "");
 
 
 
-      lists.forEach(list => {
+            div.innerHTML = `
 
-    if(list){
+            <div class="task-left">
 
-        list.appendChild(
-            div.cloneNode(true)
-        );
+            <input 
+            type="checkbox"
+            ${task.completed ? "checked" : ""}
+            onclick="toggleTask(${task.id})">
 
-    }
 
-});
+            <span>
+            ${task.name}
+            </span>
+
+
+            </div>
+
+
+            <div 
+            class="delete"
+            onclick="deleteTask(${task.id})">
+
+            删除
+
+            </div>
+
+            `;
+
+
+
+            list.appendChild(div);
+
+
+        });
 
 
     });
-
-
-}
-
-
-
-// 完成任务
-
-function toggleTask(id){
-
-
-    let task =
-    tasks.find(t=>t.id===id);
-
-
-
-    task.completed =
-    !task.completed;
-
-
-
-    saveTasks();
-
-
-    renderTasks();
-
-
-    updateProgress();
-
-
-}
-
-
-
-
-// 删除任务
-
-function deleteTask(id){
-
-
-    tasks =
-    tasks.filter(
-        t=>t.id!==id
-    );
-
-
-    saveTasks();
-
-
-    renderTasks();
-
-
-    updateProgress();
-
-
-}
-
-
-
-// 保存任务
-
-function saveTasks(){
-
-    localStorage.setItem(
-        "tasks",
-        JSON.stringify(tasks)
-    );
-
-}
-
-
-
-// 更新完成率
-
-function updateProgress(){
-
-
-    let total =
-    tasks.length;
-
-
-    let done =
-    tasks.filter(
-        t=>t.completed
-    ).length;
-
-
-
-    let percent =
-    total===0?
-    0:
-    Math.round(
-        done/total*100
-    );
-
-
-
-    document
-    .getElementById(
-        "progressBar"
-    )
-    .style.width =
-    percent+"%";
-
-
-
-    document
-    .getElementById(
-        "progressText"
-    )
-    .innerText =
-    percent+"%";
-
-
-}
-
-
-
-
-// =====================
-// 日记保存
-// =====================
-
-
-let diary =
-document.getElementById("diary");
-
-
-
-diary.addEventListener(
-"input",
-function(){
-
-localStorage.setItem(
-"diary",
-diary.value
-);
-
-});
-
-
-
-
-
-function loadDiary(){
-
-let saved =
-localStorage.getItem("diary");
-
-
-if(saved){
-
-document.getElementById(
-"diary"
-).value=saved;
-
-}
-
-
-}
-
-
-
-
-
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js")
-    .then(() => console.log("PWA ready"));
-}
-
-function switchPage(page, nav){
-
-
-    //隐藏首页
-
-    document.getElementById("home")
-    .style.display="none";
-
-
-    //隐藏其他页面
-
-    document.querySelectorAll(".page")
-    .forEach(function(item){
-
-        item.style.display="none";
-
-    });
-
-
-
-    //显示目标页面
-
-    document.getElementById(page)
-    .style.display="block";
-
-
-
-    //清除导航状态
-
-    document.querySelectorAll(".nav-item")
-    .forEach(function(item){
-
-        item.classList.remove("active");
-
-    });
-
-
-
-    //添加当前状态
-
-    nav.classList.add("active");
 
 
 }
