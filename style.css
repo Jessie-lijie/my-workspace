@@ -483,12 +483,13 @@ textarea {
 
 .nav-item.active {
 
-    color:red !important;
+    color:#6c63ff;
 
-    transform:translateY(-10px);
+    font-weight:700;
+
+    transform:translateY(-3px);
 
 }
-
 
 
 .nav-item span {
