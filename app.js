@@ -202,7 +202,7 @@ console.log(
 // =====================
 
 function switchPage(page, nav){
-
+alert("切换到："+page);
 
     //隐藏首页
 
