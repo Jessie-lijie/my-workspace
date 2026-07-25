@@ -100,25 +100,6 @@ function addTask(){
 
     input.value="";
 
-    document.getElementById("taskDate").value="";
-
-
-    closeTask();
-
-
-    renderTasks();
-
-
-    updateProgress();
-
-}
-
-
-    saveTasks();
-
-
-    input.value="";
-
 
     document.getElementById("taskDate").value="";
 
@@ -132,23 +113,6 @@ function addTask(){
     updateProgress();
 
 }
-
-    saveTasks();
-
-
-    input.value="";
-
-
-    closeTask();
-
-
-    renderTasks();
-
-
-    updateProgress();
-
-}
-
 
 
 // 显示任务
