@@ -483,9 +483,9 @@ textarea {
 
 .nav-item.active {
 
-    color:#6c63ff;
+    color:red !important;
 
-    font-weight:700;
+    transform:translateY(-10px);
 
 }
 
