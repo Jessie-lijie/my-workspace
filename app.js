@@ -329,34 +329,27 @@ if ("serviceWorker" in navigator) {
 }
 
 function switchPage(page){
-alert("点击了：" + page);
 
-    let pages =
-    document.querySelectorAll(".page");
+    alert("点击了：" + page);
 
 
-    pages.forEach(p=>{
+    // 隐藏所有页面
+    document.getElementById("home")
+    .style.display = "none";
 
-        p.classList.add("hidden");
+
+    document.querySelectorAll(".page")
+    .forEach(function(item){
+
+        item.style.display = "none";
 
     });
 
 
 
-    document
-    .getElementById(page)
-    .classList
-    .remove("hidden");
+    // 显示目标页面
+    document.getElementById(page)
+    .style.display = "block";
 
-
-
-    if(page==="home"){
-
-        document
-        .getElementById("home")
-        .classList
-        .remove("hidden");
-
-    }
 
 }
