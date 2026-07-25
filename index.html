@@ -205,41 +205,59 @@
 
 <!-- 底部导航 -->
 
-<!-- 底部导航 -->
-
 <nav class="bottom-nav">
 
-   <div class="icon">
-⌂
-</div>
 
-<div class="nav-item" onclick="switchPage('tasks',this)">
+    <div class="nav-item active" onclick="switchPage('home',this)">
 
-    <div class="icon">
-        ✓
+        🏠
+
+        <span>首页</span>
+
     </div>
 
-    <span>任务</span>
-
-</div>
 
 
-  <div class="icon">
-◎
-</div>
+    <div class="nav-item" onclick="switchPage('tasks',this)">
+
+        ☑️
+
+        <span>任务</span>
+
+    </div>
 
 
-   <div class="icon">
-✎
-</div>
+
+    <div class="nav-item" onclick="switchPage('goals',this)">
+
+        🎯
+
+        <span>目标</span>
+
+    </div>
 
 
-  <div class="icon">
-▥
-</div>
+
+    <div class="nav-item" onclick="switchPage('diaryPage',this)">
+
+        📝
+
+        <span>日记</span>
+
+    </div>
+
+
+
+    <div class="nav-item" onclick="switchPage('stats',this)">
+
+        📊
+
+        <span>统计</span>
+
+    </div>
+
 
 </nav>
-
 
 <script src="app.js?v=5"></script>
 
