@@ -205,33 +205,35 @@
 
 <!-- 底部导航 -->
 
+<!-- 底部导航 -->
+
 <nav class="bottom-nav">
 
-    <div class="nav-item active" onclick="switchPage('home')">
+    <div class="nav-item active" onclick="switchPage('home',this)">
         🏠
         <span>首页</span>
     </div>
 
 
-    <div class="nav-item" onclick="switchPage('tasks')">
+    <div class="nav-item" onclick="switchPage('tasks',this)">
         ☑️
         <span>任务</span>
     </div>
 
 
-    <div class="nav-item" onclick="switchPage('goals')">
+    <div class="nav-item" onclick="switchPage('goals',this)">
         🎯
         <span>目标</span>
     </div>
 
 
-    <div class="nav-item" onclick="switchPage('diaryPage')">
+    <div class="nav-item" onclick="switchPage('diaryPage',this)">
         📝
         <span>日记</span>
     </div>
 
 
-    <div class="nav-item" onclick="switchPage('stats')">
+    <div class="nav-item" onclick="switchPage('stats',this)">
         📊
         <span>统计</span>
     </div>
