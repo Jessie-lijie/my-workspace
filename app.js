@@ -327,14 +327,16 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("PWA ready"));
 }
 
-function switchPage(page){
+function switchPage(page, nav){
 
 
-    // 隐藏页面
+    //隐藏首页
 
     document.getElementById("home")
     .style.display="none";
 
+
+    //隐藏其他页面
 
     document.querySelectorAll(".page")
     .forEach(function(item){
@@ -345,14 +347,14 @@ function switchPage(page){
 
 
 
-    // 显示目标页面
+    //显示目标页面
 
     document.getElementById(page)
     .style.display="block";
 
 
 
-    // 更新底部导航状态
+    //清除导航状态
 
     document.querySelectorAll(".nav-item")
     .forEach(function(item){
@@ -363,30 +365,9 @@ function switchPage(page){
 
 
 
-    let navs =
-    document.querySelectorAll(".nav-item");
+    //添加当前状态
 
-
-    let pages=[
-        "home",
-        "tasks",
-        "goals",
-        "diaryPage",
-        "stats"
-    ];
-
-
-    let index =
-    pages.indexOf(page);
-
-
-    if(index>=0){
-
-        navs[index]
-        .classList
-        .add("active");
-
-    }
+    nav.classList.add("active");
 
 
 }
