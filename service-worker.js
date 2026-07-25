@@ -1,4 +1,4 @@
-const CACHE_NAME = "workbench-v4";
+const CACHE_NAME = "workbench-v5";
 
 const FILES = [
   "/",
@@ -22,7 +22,42 @@ self.addEventListener("install", event => {
 
 });
 
+self.addEventListener("activate", event => {
 
+    event.waitUntil(
+
+        caches.keys().then(keys => {
+
+            return Promise.all(
+
+                keys.map(key => {
+
+                    if(key !== CACHE_NAME){
+
+                        return caches.delete(key);
+
+                    }
+
+                })
+
+            );
+
+        })
+
+    );
+
+});
+
+self.addEventListener("fetch", event => {
+
+  event.respondWith(
+
+    caches.match(event.request)
+    .then(response=>response || fetch(event.request))
+
+  );
+
+});
 
 // 激活
 self.addEventListener("activate", event => {
