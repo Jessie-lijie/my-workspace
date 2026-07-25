@@ -330,8 +330,6 @@ if ("serviceWorker" in navigator) {
 
 function switchPage(page){
 
-    alert("点击了：" + page);
-
 
     // 隐藏所有页面
     document.getElementById("home")
