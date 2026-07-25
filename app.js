@@ -163,7 +163,17 @@ lists.forEach(list => {
 
 
 
-        list.appendChild(div);
+      lists.forEach(list => {
+
+    if(list){
+
+        list.appendChild(
+            div.cloneNode(true)
+        );
+
+    }
+
+});
 
 
     });
