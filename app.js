@@ -64,7 +64,6 @@ function addTask(){
 
 
     if(name===""){
-        alert("请输入任务名称");
         return;
     }
 
