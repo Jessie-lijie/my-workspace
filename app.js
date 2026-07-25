@@ -197,3 +197,69 @@ console.log(
 
 
 }
+// =====================
+// 页面切换
+// =====================
+
+function switchPage(page, nav){
+
+
+    //隐藏首页
+
+    let home =
+    document.getElementById("home");
+
+
+    if(home){
+
+        home.style.display="none";
+
+    }
+
+
+
+    //隐藏所有其他页面
+
+    document.querySelectorAll(".page")
+    .forEach(function(item){
+
+        item.style.display="none";
+
+    });
+
+
+
+    //显示目标页面
+
+    let target =
+    document.getElementById(page);
+
+
+    if(target){
+
+        target.style.display="block";
+
+    }
+
+
+
+    //清除导航状态
+
+    document.querySelectorAll(".nav-item")
+    .forEach(function(item){
+
+        item.classList.remove("active");
+
+    });
+
+
+
+    //当前导航高亮
+
+    if(nav){
+
+        nav.classList.add("active");
+
+    }
+
+}
