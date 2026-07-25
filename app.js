@@ -102,7 +102,15 @@ function addTask(){
 // 显示任务
 
 function renderTasks(){
+console.log(
+    "taskList:",
+    document.getElementById("taskList")
+);
 
+console.log(
+    "allTasks:",
+    document.getElementById("allTasks")
+);
 
     let lists = [
         document.getElementById("taskList"),
