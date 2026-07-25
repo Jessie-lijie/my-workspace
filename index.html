@@ -172,30 +172,75 @@
     </div>
 
 </section>
-
-    <!-- 添加任务窗口 -->
+<!-- 添加任务窗口 -->
 
 <div id="taskBox" class="popup hidden">
 
+
     <div class="popup-content">
 
+
         <h2>添加任务</h2>
+
+
 
         <input 
         id="taskInput"
         placeholder="任务名称">
 
 
+
+        <h3>优先级</h3>
+
+
+        <select id="taskPriority">
+
+
+            <option value="重要">
+                🔴 重要
+            </option>
+
+
+            <option value="普通" selected>
+                🟡 普通
+            </option>
+
+
+            <option value="轻松">
+                🟢 轻松
+            </option>
+
+
+        </select>
+
+
+
+        <h3>截止日期</h3>
+
+
+        <input 
+        type="date"
+        id="taskDate">
+
+
+
         <button onclick="addTask()">
+
             保存
+
         </button>
+
 
 
         <button onclick="closeTask()">
+
             取消
+
         </button>
 
+
     </div>
+
 
 </div>
 
