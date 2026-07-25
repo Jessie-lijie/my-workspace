@@ -329,7 +329,7 @@ if ("serviceWorker" in navigator) {
 }
 
 function switchPage(page){
-
+alert("点击了：" + page);
 
     let pages =
     document.querySelectorAll(".page");
